@@ -36,3 +36,73 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  font-family: sans-serif;
+  background-image: linear-gradient(to right, #dc5aa8, #c070c0);
+  background-size: cover;
+  padding: 5%;
+}
+
+.homediv {
+  display: flex;
+}
+
+.economelogo1 {
+  height: 100%;
+}
+
+.headergreeting {
+  display: flex;
+  height: 5%;
+}
+
+.LeftDiv {
+  width: 50%;
+  margin-right: 2%;
+}
+
+.RightDiv {
+  width: 50%;
+}
+
+.LeftDivContent {
+  background-color: white;
+  height: 100%;
+  width: 90%;
+  padding: 2%;
+  margin: 2%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.RightDivContent {
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  padding: 2%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.Income {
+  border: 2px solid gray;
+  background-color: #d9d9d9;
+}
+
+.Expense {
+  border: 2px solid gray;
+  background-color: #d9d9d9;
+  margin-top: 3%;
+}
+
+.Transactions {
+  padding-left: 2%;
+  border: 2px solid gray;
+  background-color: #d9d9d9;
+  margin-top: 1%;
+}
+
+.table {
+  width: 100%;
+}
