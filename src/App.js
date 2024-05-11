@@ -1,10 +1,11 @@
 import "./App.css";
-import Home from "./Components/Home";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Register from "./Components/Register";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <Register />
     </div>
   );
 }

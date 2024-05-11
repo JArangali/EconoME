@@ -42,14 +42,20 @@ body {
   background-image: linear-gradient(to right, #dc5aa8, #c070c0);
   background-size: cover;
   padding: 5%;
+  min-height: 100vh;
 }
 
 .homediv {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  flex-direction: row;
 }
 
 .economelogo1 {
   height: 100%;
+  margin-right: 2%;
 }
 
 .headergreeting {
@@ -88,6 +94,13 @@ body {
 .Income {
   border: 2px solid gray;
   background-color: #d9d9d9;
+  display: flex;
+}
+
+.Income_Container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
 }
 
 .Expense {
@@ -105,4 +118,82 @@ body {
 
 .table {
   width: 100%;
+  height: 10px;
+}
+
+.loginlogo {
+  height: 300px;
+  width: 100%;
+}
+
+.username,
+.password,
+.number,
+.email,
+.confirmpassword {
+  position: relative;
+}
+
+.usernameimg,
+.passwordimg,
+.numberimg,
+.emailimg,
+.confirmpasswordimg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 50%;
+  transition: opacity 0.3s ease;
+}
+
+.username:focus ~ .usernameimg,
+.password:focus ~ .passwordimg,
+.number:focus ~ .numberimg,
+.email:focus ~ .emailimg {
+  opacity: 100%;
+}
+
+.btn-pink {
+  background-color: #ff69b4;
+  color: #fff;
+  border-color: #ff69b4;
+}
+
+.loginregleft,
+.loginright {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.logincontainer,
+.regcontainer {
+  width: 80%;
+  max-width: 2000px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #f5f2f3;
+  padding: 20px;
+}
+
+.form-group {
+  margin-right: 0;
+}
+
+@media (max-width: 767.98px) {
+  .logincontainer {
+    width: 100%;
+    padding: 50px;
+  }
+  .loginleft,
+  .loginright {
+    padding: 10px;
+  }
 }

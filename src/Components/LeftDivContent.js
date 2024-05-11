@@ -4,35 +4,31 @@ function LeftDivContent() {
   return (
     <div className="LeftDivContent">
       <div className="Income">
-        <table className="table">
-          <tr>
-            <td>
-              <h4>Income</h4>
-            </td>
-            <td>
-              <h4>10,000</h4>
-            </td>
-            <td>
-              <button>Add</button>
-            </td>
-          </tr>
-        </table>
+        <div className="Income_Container">
+          <div>
+            <h4>Income</h4>
+          </div>
+          <div>
+            <h4>P10,000</h4>
+          </div>
+        </div>
+        <div className="div_button">
+          <button>Add</button>
+        </div>
       </div>
 
       <div className="Expense">
-        <table className="table">
-          <tr>
-            <td>
-              <h4>Expense</h4>
-            </td>
-            <td>
-              <h4>10,000</h4>
-            </td>
-            <td>
-              <button>Add</button>
-            </td>
-          </tr>
-        </table>
+        <div className="Expense_Container">
+          <div>
+            <h4>Income</h4>
+          </div>
+          <div>
+            <h4>P10,000</h4>
+          </div>
+        </div>
+        <div className="div_button">
+          <button>Add</button>
+        </div>
       </div>
     </div>
   );
