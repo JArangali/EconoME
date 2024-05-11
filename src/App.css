@@ -60,10 +60,12 @@ body {
 .LeftDiv {
   width: 50%;
   margin-right: 2%;
+  height: auto;
 }
 
 .RightDiv {
   width: 50%;
+  height: auto;
 }
 
 .LeftDivContent {
@@ -94,6 +96,18 @@ body {
   border: 2px solid gray;
   background-color: #d9d9d9;
   margin-top: 3%;
+}
+
+.Chart_Content {
+  background-color: white;
+  height: 100%;
+  width: 90%;
+  padding: 2%;
+  margin: 2%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
 
 .Transactions {
