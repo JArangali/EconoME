@@ -1,13 +1,38 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function LoginRight() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Add your login logic here
-    console.log(`Username: ${username}, Password: ${password}`);
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const user = users.find(
+      (user) => user.username === username && user.password === password
+    );
+    if (user) {
+      // Set the user in local storage
+      localStorage.setItem("currentUser", JSON.stringify(user));
+      // Redirect to home page
+      window.location.href = "/";
+    } else {
+      setUsernameError("Invalid username.");
+      setPasswordError("Invalid password.");
+    }
+  };
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+    setUsernameError("");
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+    setPasswordError("");
   };
 
   return (
@@ -23,10 +48,13 @@ function LoginRight() {
               placeholder="Username"
               name="username"
               value={username}
-              onChange={(event) => setUsername(event.target.value)}
+              onChange={handleUsernameChange}
               style={{ paddingLeft: "35px" }}
             />
           </div>
+          {usernameError && (
+            <div className="error-message">{usernameError}</div>
+          )}
         </div>
         <br />
         <div>
@@ -38,10 +66,13 @@ function LoginRight() {
               placeholder="Password"
               name="password"
               value={password}
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={handlePasswordChange}
               style={{ paddingLeft: "35px" }}
             />
           </div>
+          {passwordError && (
+            <div className="error-message">{passwordError}</div>
+          )}
         </div>
         <br />
         <button type="submit" className="btn btn-warning">
@@ -50,7 +81,7 @@ function LoginRight() {
       </form>
       <br />
       <p>
-        Don't have an account? <a href="/create-account">Create an account</a>
+        Don't have an account? <a href="/Register">Create an account.</a>
       </p>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import LoginRegLeft from "./LoginRegLeft";
+import RegLeft from "./RegLeft";
 import RegRight from "./RegRight";
 
 function Register() {
@@ -8,7 +8,7 @@ function Register() {
       <div className="regcontainer">
         <div className="row">
           <div className="col-md-6 loginleft">
-            <LoginRegLeft />
+            <RegLeft />
           </div>
           <div className="col-md-6 loginright">
             <RegRight />

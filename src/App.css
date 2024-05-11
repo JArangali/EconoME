@@ -121,10 +121,23 @@ body {
   height: 10px;
 }
 
-.loginlogo {
-  height: 300px;
-  width: 100%;
+/* .loginlogo {
+  width: 150%;
+  height: 100%;
+  padding-left: 50%;
+  display: block;
+  margin: auto;
+  padding-top: 50%;
 }
+
+.reglogo {
+  width: 150%;
+  height: 100%;
+  padding-left: 50%;
+  display: block;
+  margin: auto;
+  padding-top: 50%;
+} */
 
 .username,
 .password,
@@ -162,17 +175,37 @@ body {
   border-color: #ff69b4;
 }
 
-.loginregleft,
-.loginright {
+.loginleft,
+.regleft {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
 }
 
-.logincontainer,
+.loginright {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 100%; /* add this line */
+}
+
+.logincontainer {
+  width: 1000px;
+  max-width: 2000px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #f5f2f3;
+  padding: 5%;
+  align-items: center; /* add this line */
+  height: 100%;
+}
 .regcontainer {
-  width: 80%;
+  width: 1000px;
   max-width: 2000px;
   margin: 0 auto;
   border: 1px solid #ddd;
@@ -181,6 +214,10 @@ body {
   overflow: hidden;
   background-color: #f5f2f3;
   padding: 20px;
+  display: flex; /* add this line */
+  flex-direction: column; /* add this line */
+  align-items: center; /* add this line */
+  height: 100%;
 }
 
 .form-group {
@@ -194,6 +231,144 @@ body {
   }
   .loginleft,
   .loginright {
-    padding: 10px;
+    padding: 10;
+  }
+}
+
+.form-control.error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  padding-top: 0%;
+  margin: 0%;
+}
+.loginlogo {
+  width: 30%; /* adjust the width as needed */
+  height: auto; /* adjust the height automatically */
+  margin: 0 auto; /* center the image horizontally */
+  display: block;
+}
+
+.reglogo {
+  width: 150%; /* adjust the width as needed */
+  height: auto; /* adjust the height automatically */
+  margin: 0 auto; /* center the image horizontally */
+  display: block;
+}
+
+/* Add this media query for full screen (min-width: 768px) */
+@media (min-width: 808px) {
+  .loginlogo {
+    width: 150%; /* adjust the width as needed */
+    height: auto; /* adjust the height automatically */
+    padding-left: 50%; /* adjust the padding as needed */
+    display: block;
+    margin: auto;
+  }
+}
+
+/* Add this media query for phone screens (max-width: 480px) */
+@media (max-width: 500px) {
+  .homediv {
+    flex-direction: column;
+  }
+
+  .LeftDiv {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .RightDiv {
+    width: 100%;
+  }
+
+  .LeftDivContent {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .RightDivContent {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .loginlogo {
+    width: 100%;
+    height: 50;
+    margin: 0 auto; /* center the image horizontally */
+  }
+
+  .reglogo {
+    width: 30%;
+    height: auto;
+    margin: 0 auto; /* center the image horizontally */
+  }
+
+  .logincontainer {
+    width: 100%;
+    padding: auto;
+    align-items: center;
+  }
+
+  .regcontainer {
+    width: 100%;
+    padding: 20px;
+    align-items: center;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .btn-pink {
+    width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .homediv {
+    flex-direction: column;
+  }
+
+  .LeftDiv {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .RightDiv {
+    width: 100%;
+  }
+
+  .LeftDivContent {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .RightDivContent {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .reglogo {
+    width: 50%;
+    height: auto;
+    margin: 0 auto; /* center the image horizontally */
+  }
+
+  .regcontainer {
+    width: 100%;
+    align-items: center;
+    height: max-content;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .btn-pink {
+    width: 100%;
   }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import LoginRegLeft from "./LoginRegLeft";
+import LoginLeft from "./LoginLeft";
 import LoginRight from "./LoginRight";
 
 function Login() {
@@ -8,7 +8,7 @@ function Login() {
       <div className="logincontainer">
         <div className="row">
           <div className="col-md-6 loginleft">
-            <LoginRegLeft />
+            <LoginLeft />
           </div>
           <div className="col-md-6 loginright">
             <LoginRight />

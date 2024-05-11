@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function RegRight() {
   const [username, setUsername] = useState("");
@@ -6,20 +7,126 @@ function RegRight() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [phoneNumberError, setPhoneNumberError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Add your registration logic here
-    console.log(
-      `Username: ${username}, Email: ${email}, Phone Number: ${phoneNumber}, Password: ${password}, Confirm Password: ${confirmPassword}`
-    );
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const newUser = {
+      username,
+      email,
+      phoneNumber,
+      password,
+      confirmPassword,
+    };
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+    // Set the user in local storage
+    localStorage.setItem("currentUser", JSON.stringify(newUser));
+    // Redirect to home page
+    window.location.href = "/login";
+  };
+
+  const validateUsername = (username) => {
+    if (!username.trim()) {
+      setUsernameError("Username is required");
+      return false;
+    } else if (username.length < 3 || username.length > 20) {
+      setUsernameError("Username must be between 3 and 20 characters");
+      return false;
+    } else {
+      setUsernameError("");
+      return true;
+    }
+  };
+
+  const validateEmail = (email) => {
+    if (!email.trim()) {
+      setEmailError("Email is required");
+      return false;
+    } else if (!/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/.test(email)) {
+      setEmailError("Email is invalid");
+      return false;
+    } else {
+      setEmailError("");
+      return true;
+    }
+  };
+
+  const validatePhoneNumber = (phoneNumber) => {
+    if (!phoneNumber.trim()) {
+      setPhoneNumberError("Phone number is required");
+      return false;
+    } else if (!/^\d{11}$/.test(phoneNumber)) {
+      setPhoneNumberError("Phone number must be 11 digits");
+      return false;
+    } else {
+      setPhoneNumberError("");
+      return true;
+    }
+  };
+
+  const validatePassword = (password) => {
+    if (!password.trim()) {
+      setPasswordError("Password is required");
+      return false;
+    } else if (password.length < 8 || password.length > 20) {
+      setPasswordError("Password must be between 8 and 20 characters");
+      return false;
+    } else {
+      setPasswordError("");
+      return true;
+    }
+  };
+
+  const validateConfirmPassword = (confirmPassword) => {
+    if (!confirmPassword.trim()) {
+      setConfirmPasswordError("Confirm password is required");
+      return false;
+    } else if (confirmPassword !== password) {
+      setConfirmPasswordError("Confirm password must match password");
+      return false;
+    } else {
+      setConfirmPasswordError("");
+      return true;
+    }
+  };
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+    validateUsername(event.target.value);
+  };
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+    validateEmail(event.target.value);
+  };
+
+  const handlePhoneNumberChange = (event) => {
+    setPhoneNumber(event.target.value);
+    validatePhoneNumber(event.target.value);
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+    validatePassword(event.target.value);
+  };
+
+  const handleConfirmPasswordChange = (event) => {
+    setConfirmPassword(event.target.value);
+    validateConfirmPassword(event.target.value);
   };
 
   return (
     <div>
       <h1>Register</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="username-container">
           <div className="username">
             <img
               className="usernameimg"
@@ -28,14 +135,15 @@ function RegRight() {
             />
             <input
               type="text"
-              className="form-control username-input"
+              className={`form-control ${usernameError ? "error" : ""}`}
               placeholder="Username"
               name="username"
               value={username}
-              onChange={(event) => setUsername(event.target.value)}
+              onChange={handleUsernameChange}
               style={{ paddingLeft: "35px" }}
             />
           </div>
+          {usernameError && <p className="error-message">{usernameError}</p>}
         </div>
         <br />
         <div>
@@ -47,14 +155,15 @@ function RegRight() {
             />
             <input
               type="email"
-              className="form-control email-input"
+              className={`form-control ${emailError ? "error" : ""}`}
               placeholder="Email"
               name="email"
               value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={handleEmailChange}
               style={{ paddingLeft: "35px" }}
             />
           </div>
+          {emailError && <p className="error-message">{emailError}</p>}
         </div>
         <br />
         <div>
@@ -66,14 +175,17 @@ function RegRight() {
             />
             <input
               type="tel"
-              className="form-control phone-number-input"
+              className={`form-control ${phoneNumberError ? "error" : ""}`}
               placeholder="Phone Number"
               name="phoneNumber"
               value={phoneNumber}
-              onChange={(event) => setPhoneNumber(event.target.value)}
+              onChange={handlePhoneNumberChange}
               style={{ paddingLeft: "35px" }}
             />
           </div>
+          {phoneNumberError && (
+            <p className="error-message">{phoneNumberError}</p>
+          )}
         </div>
         <br />
         <div>
@@ -85,14 +197,15 @@ function RegRight() {
             />
             <input
               type="password"
-              className="form-control password-input"
+              className={`form-control ${passwordError ? "error" : ""}`}
               placeholder="Password"
               name="password"
               value={password}
-              onChange={(event) => setPassword(event.target.value)}
+              onChange={handlePasswordChange}
               style={{ paddingLeft: "35px" }}
             />
           </div>
+          {passwordError && <p className="error-message">{passwordError}</p>}
         </div>
         <br />
         <div>
@@ -100,27 +213,34 @@ function RegRight() {
             <img
               className="confirmpasswordimg"
               alt="Confirm password icon"
-              src="/Assests/ConfirmPassword.png"
+              src="/Assests/Password.png"
             />
             <input
               type="password"
-              className="form-control confirm-password-input"
+              className={`form-control ${confirmPasswordError ? "error" : ""}`}
               placeholder="Confirm Password"
               name="confirmPassword"
               value={confirmPassword}
-              onChange={(event) => setConfirmPassword(event.target.value)}
+              onChange={handleConfirmPasswordChange}
               style={{ paddingLeft: "35px" }}
             />
           </div>
+          {confirmPasswordError && (
+            <p className="error-message">{confirmPasswordError}</p>
+          )}
         </div>
         <br />
-        <button type="submit" className="btn btn-warning">
+        <button
+          type="button"
+          className="btn btn-warning"
+          onClick={handleSubmit}
+        >
           Register
         </button>
       </form>
       <br />
       <p>
-        Already have an account? <a href="/login">Login here!</a>
+        Already have an account? <Link to="/login">Login here!</Link>
       </p>
     </div>
   );
