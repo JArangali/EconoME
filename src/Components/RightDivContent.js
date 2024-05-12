@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import API from "../API/API.js";
+import React, { useState, useEffect } from "react";
 import TransactionItemList from "./TransactionItemList";
 import LeftDivContent from "./LeftDivContent"; // import LeftDivContent
 
@@ -33,9 +32,50 @@ function RightDivContent() {
     },
   ]);
 
+  const [totalExpense, setTotalExpense] = useState(0);
+  const [totalIncome, setTotalIncome] = useState(0);
+
+  useEffect(() => {
+    let expense = 0;
+    let income = 0;
+
+    items.forEach((item) => {
+      if (item.type === "Expense") {
+        expense += item.amount;
+      } else if (item.type === "Income") {
+        income += item.amount;
+      }
+    });
+
+    setTotalExpense(expense);
+    setTotalIncome(income);
+  }, [items]);
+
   const handleAddItem = (newItem) => {
-    // change handleAddItem to an arrow function
-    setItems((items) => [...items, newItem]); // update the items state
+    setItems((newitems) => {
+      const newItems = [...items, newItem];
+      let expense = 0;
+      let income = 0;
+
+      newItems.forEach((item) => {
+        if (item.type === "Expense") {
+          expense += item.amount;
+        } else if (item.type === "Income") {
+          income += item.amount;
+        }
+      });
+
+      // Calculate new totals based on newItems array
+      const newTotalExpense = expense + newItem.amount;
+      const newTotalIncome = income + newItem.amount;
+
+      // Update totalExpense and totalIncome state variables
+      setTotalExpense(newTotalExpense);
+      setTotalIncome(newTotalIncome);
+
+      // Return updated items
+      return newItems;
+    });
   };
 
   const [sortBy, setSortBy] = useState("input");
@@ -89,9 +129,12 @@ function RightDivContent() {
 
   return (
     <div>
-      <API />
       <div className="RightDivContent">
-        <LeftDivContent onAddItem={handleAddItem} />{" "}
+        <LeftDivContent
+          onAddItem={handleAddItem}
+          totalIncome={totalIncome}
+          totalExpense={totalExpense}
+        />{" "}
         {/* pass handleAddItem as a prop */}
         <div className="Transactions">
           <table className="transtable">

@@ -1,4 +1,6 @@
 import React from "react";
+import API from "../API/API.js";
+import Chart from "./Chart";
 import LeftDivContent from "./LeftDivContent";
 
 function LeftDiv() {
@@ -10,7 +12,8 @@ function LeftDiv() {
       </div>
 
       <div>
-        <LeftDivContent />
+        <API />
+        <Chart />
       </div>
     </div>
   );
