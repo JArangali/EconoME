@@ -60,12 +60,10 @@ body {
 .LeftDiv {
   width: 50%;
   margin-right: 2%;
-  height: auto;
 }
 
 .RightDiv {
   width: 50%;
-  height: auto;
 }
 
 .LeftDivContent {
@@ -80,7 +78,6 @@ body {
 
 .RightDivContent {
   background-color: white;
-  height: 100%;
   width: 100%;
   padding: 2%;
   border-radius: 10px;
@@ -90,24 +87,18 @@ body {
 .Income {
   border: 2px solid gray;
   background-color: #d9d9d9;
+  display: flex;
+  justify-content: space-evenly;
+  padding: inherit;
 }
 
 .Expense {
   border: 2px solid gray;
   background-color: #d9d9d9;
   margin-top: 3%;
-}
-
-.Chart_Content {
-  background-color: white;
-  height: 100%;
-  width: 90%;
-  padding: 2%;
-  margin: 2%;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: inherit;
 }
 
 .Transactions {
@@ -121,18 +112,14 @@ body {
   width: 100%;
 }
 
-.container {
-  height: 500px;
-  width: 500px;
-  /* background-image: linear-gradient(to bottom left,#a4d1a2,#b1eece ); */
-  background-color: #ffffff;
-  margin-top: 10vh;
-  padding: 20px;
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  color: #000000;
-  opacity: 1;
-  text-align: center;
-  align-content: center;
+.Chart_Content {
+  background-color: white;
+  height: 100%;
+  width: 90%;
+  padding: 2%;
+  margin: 2%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }
