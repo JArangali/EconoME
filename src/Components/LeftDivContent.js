@@ -24,18 +24,6 @@ function LeftDivContent({ onAddItem, totalIncome, totalExpense }) {
       isChecked: false,
     };
     onAddItem(newTransactionItem); // call onAddItem
-    // Update totalIncome or totalExpense based on transaction type
-    if (transactionData.type === "Income") {
-      onAddItem({
-        type: "updateTotalIncome",
-        amount: newTransactionItem.amount,
-      });
-    } else if (transactionData.type === "Expense") {
-      onAddItem({
-        type: "updateTotalExpense",
-        amount: newTransactionItem.amount,
-      });
-    }
   };
 
   useEffect(() => {
@@ -49,7 +37,7 @@ function LeftDivContent({ onAddItem, totalIncome, totalExpense }) {
         <h4>{totalIncome}</h4>
         <Button
           className="btncircleIncome"
-          onClick={() => handleShow("income")}
+          onClick={() => handleShow("Income")}
         >
           Add
         </Button>
@@ -60,7 +48,7 @@ function LeftDivContent({ onAddItem, totalIncome, totalExpense }) {
         <h4>{totalExpense}</h4>
         <Button
           className="btncircleExpense"
-          onClick={() => handleShow("expense")}
+          onClick={() => handleShow("Expense")}
         >
           Add
         </Button>
@@ -74,7 +62,7 @@ function LeftDivContent({ onAddItem, totalIncome, totalExpense }) {
       >
         <Modal.Header closeButton>
           <Modal.Title>
-            {modalType === "income" ? "Add Income" : "Add Expense"}
+            {modalType === "Income" ? "Add Income" : "Add Expense"}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
