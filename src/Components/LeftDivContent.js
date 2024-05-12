@@ -66,7 +66,20 @@ function LeftDivContent({ onAddItem, totalIncome, totalExpense }) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <AddTransactionForm type={modalType} onSubmit={handleFormSubmit} />
+          <AddTransactionForm
+            type={modalType}
+            onSubmit={handleFormSubmit}
+            allowedPurposes={{
+              Income: ["Savings"],
+              Expense: [
+                "Household",
+                "Transportation",
+                "Personal",
+                "Education",
+                "Others",
+              ], // or some other default options
+            }}
+          />
         </Modal.Body>
       </Modal>
     </div>

@@ -1,5 +1,11 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import {
+  Form,
+  Button,
+  FormControl,
+  FormLabel,
+  FormGroup,
+} from "react-bootstrap";
 
 function AddTransactionModal({
   onSubmit,
@@ -9,38 +15,60 @@ function AddTransactionModal({
   amount,
   setAmount,
   date,
+  setReason,
+  reason,
   setDate,
+  purposeOptions,
 }) {
   return (
     <Form onSubmit={onSubmit}>
-      <Form.Group className="mb-3">
-        <Form.Label>Purpose</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Enter purpose"
+      <FormGroup className="mb-3">
+        <FormLabel>Date</FormLabel>
+        <FormControl
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          required
+        />
+      </FormGroup>
+
+      <FormGroup className="mb-3">
+        <FormLabel>Purpose</FormLabel>
+        <FormControl
+          as="select"
           value={purpose}
           onChange={(e) => setPurpose(e.target.value)}
-        />
-      </Form.Group>
+          required
+        >
+          {purposeOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </FormControl>
+      </FormGroup>
 
-      <Form.Group className="mb-3">
-        <Form.Label>Amount</Form.Label>
-        <Form.Control
+      <FormGroup className="mb-3">
+        <FormLabel>Amount</FormLabel>
+        <FormControl
           type="number"
           placeholder="Enter amount"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
+          required
         />
-      </Form.Group>
+      </FormGroup>
 
-      <Form.Group className="mb-3">
-        <Form.Label>Date</Form.Label>
-        <Form.Control
-          type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
+      <FormGroup className="mb-3">
+        <FormLabel>Reason</FormLabel>
+        <FormControl
+          type="text"
+          placeholder="Enter Reason"
+          value={reason}
+          onChange={(e) => setReason(e.target.value)}
+          required
         />
-      </Form.Group>
+      </FormGroup>
 
       <Button variant="primary" type="submit">
         Add

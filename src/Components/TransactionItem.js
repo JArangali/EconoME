@@ -28,10 +28,17 @@ function TransactionItem({ item, onDelete, onCheckedItem }) {
         <td style={{ textDecoration: isChecked ? "line-through" : "none" }}>
           {item.amount}
         </td>
+        <td style={{ textDecoration: isChecked ? "line-through" : "none" }}>
+          {item.reason}
+        </td>
         <td>
-          <button className="button-row" onClick={handleCheck}>
-            {isChecked ? "Paid" : "Unpaid"}
-          </button>
+          {item.type === "Expense" ? (
+            <button className="button-row" onClick={handleCheck}>
+              {isChecked ? "Paid" : "Unpaid"}
+            </button>
+          ) : (
+            "Earnings"
+          )}
         </td>
         <td>
           <button className="button-row" onClick={handleClick}>

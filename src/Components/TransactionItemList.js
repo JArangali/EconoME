@@ -11,6 +11,7 @@ function TransactionItemList({ items, onDeleteItem, onCheckedItem }) {
           <td className="bold-text">TYPE</td>
           <td className="bold-text">PURPOSE</td>
           <td className="bold-text">AMOUNT</td>
+          <td className="bold-text">REASON</td>
           <td className="bold-text">STATUS</td>
           <td className="bold-text">DELETE</td>
         </tr>
