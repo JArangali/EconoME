@@ -1,16 +1,8 @@
 import * as React from "react";
 import { PieChart } from "@mui/x-charts/PieChart";
-
 import { Typography, Stack } from "@mui/material";
 
-const items = [
-  { id: "id_A", value: 10, label: "Savings" },
-  { id: "id_B", value: 15, label: "Household" },
-  { id: "id_C", value: 20, label: "Transportation" },
-  { id: "id_D", value: 20, label: "Personal" },
-  { id: "id_E", value: 20, label: "Education" },
-];
-export default function Chart() {
+export default function Chart(totalExpense, totalIncome) {
   return (
     <div className="Chart_Content">
       <center>
@@ -33,7 +25,10 @@ export default function Chart() {
         <PieChart
           series={[
             {
-              data: items,
+              data: [
+                { id: "id_A", value: totalIncome, label: "Income" },
+                { id: "id_B", value: totalExpense, label: "Expenses" },
+              ],
             },
           ]}
           width={500}

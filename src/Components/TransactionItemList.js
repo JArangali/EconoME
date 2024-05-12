@@ -1,5 +1,4 @@
 import TransactionItem from "./TransactionItem";
-import React, { useState, useEffect } from "react";
 import "../Luis.css";
 // import Entry from "./Item";
 
