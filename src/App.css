@@ -120,3 +120,19 @@ body {
 .table {
   width: 100%;
 }
+
+.container {
+  height: 500px;
+  width: 500px;
+  /* background-image: linear-gradient(to bottom left,#a4d1a2,#b1eece ); */
+  background-color: #ffffff;
+  margin-top: 10vh;
+  padding: 20px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  color: #000000;
+  opacity: 1;
+  text-align: center;
+  align-content: center;
+}
