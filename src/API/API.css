@@ -1,0 +1,109 @@
+/* Variables */
+:root {
+  --primary-color: #064111;
+  --secondary-color: #6c757d;
+}
+
+/* Container */
+.containers {
+  background-color: white;
+  height: 50%;
+  width: 100%;
+  padding: 2%;
+  margin-left: 0%;
+  margin-bottom: 5%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* Main */
+.main {
+  width: auto;
+  border: 1px solid #cccccc;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+/* Form Group */
+.main .form-group {
+  margin-bottom: 10px;
+}
+
+/* Search Box */
+.main .searchBox {
+  width: 100%;
+  padding: 10px;
+  font-size: var(--font-size-lg);
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Input Group */
+.main .input-group {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.main .input-group-prepend {
+  background-color: #f2f2f2;
+  width: auto;
+}
+
+.main .input-group-text {
+  padding: 10px 10px 10px 0px;
+  font-size: var(--font-size-lg);
+  margin-right: 10px;
+}
+
+/* Select Boxes */
+.main .from,
+.main .to {
+  width: 100%;
+  padding: 10px;
+  font-size: var(--font-size-lg);
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Buttons */
+.convert-btn {
+  padding: 10px 20px;
+  font-size: var(--font-size-lg);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: #fff;
+  margin-right: 10px;
+}
+
+.reset-btn {
+  padding: 10px 20px;
+  font-size: var(--font-size-lg);
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  background-color: var(--secondary-color);
+  color: #fff;
+}
+
+/* Final Amount */
+#finalAmount {
+  margin-top: 10px;
+}
+
+#finalAmount .finalValue {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.olabel {
+  text-align: left !important;
+}
+
+h5 {
+  margin: 0;
+}
