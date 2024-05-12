@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import TransactionItemList from "./TransactionItemList";
 import LeftDivContent from "./LeftDivContent"; // import LeftDivContent
+import { PieChart } from "@mui/x-charts/PieChart";
+import { Typography, Stack } from "@mui/material";
 
 import "../Luis.css";
 
@@ -80,7 +82,7 @@ function RightDivContent() {
 
   function handleDeleteItem(id) {
     setItems((items) => {
-      const newItems = items.filter((item) => item.id != id);
+      const newItems = items.filter((item) => item.id !== id);
       let expense = 0;
       let income = 0;
 
@@ -108,7 +110,7 @@ function RightDivContent() {
   };
 
   let sortedItems;
-  if (sortBy == "input") sortedItems = items;
+  if (sortBy === "input") sortedItems = items;
   if (sortBy === "type")
     sortedItems = items.slice().sort((a, b) => a.type.localeCompare(b.type));
   if (sortBy === "purpose")
@@ -143,6 +145,40 @@ function RightDivContent() {
 
   return (
     <div>
+      <div className="Chart_Content">
+        <center>
+          <h1> Your Expenses</h1>
+        </center>
+        <Stack
+          direction={{ xs: "column", md: "row" }}
+          alignItems={{ xs: "flex-start", md: "center" }}
+          justifyContent="space-between"
+          sx={{ width: "100%" }}
+        >
+          <Typography
+            component="pre"
+            sx={{
+              maxWidth: { xs: "100%", md: "50%", flexShrink: 1 },
+              overflow: "auto",
+            }}
+          ></Typography>
+
+          <PieChart
+            series={[
+              {
+                data: [
+                  { id: "id_A", value: totalIncome, label: "Income" },
+                  { id: "id_B", value: totalExpense, label: "Expenses" },
+                ],
+              },
+            ]}
+            width={500}
+            height={300}
+            margin={{ right: 200 }}
+          />
+        </Stack>
+      </div>
+
       <div className="RightDivContent">
         <LeftDivContent
           onAddItem={handleAddItem}

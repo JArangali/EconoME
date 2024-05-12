@@ -1,9 +1,8 @@
 import React from "react";
 import API from "../API/API.js";
 import Chart from "./Chart";
-import LeftDivContent from "./LeftDivContent";
 
-function LeftDiv() {
+function LeftDiv(totalExpense, totalIncome) {
   return (
     <div className="LeftDiv">
       <div className="headergreeting">
@@ -13,7 +12,7 @@ function LeftDiv() {
 
       <div>
         <API />
-        <Chart />
+        <Chart totalIncome={totalIncome} totalExpense={totalExpense} />
       </div>
     </div>
   );
