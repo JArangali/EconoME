@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AddTransactionForm from "./AddTransactionForm";
-import Chart from "./Chart";
 
-function LeftDivContent({ onAddItem }) {
+function LeftDivContent({ onAddItem, totalIncome, totalExpense }) {
   // receive onAddItem as a prop
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalType, setModalType] = useState(""); // 'income' or 'expense'
+  const [modalType, setModalType] = useState("");
 
   const handleClose = () => setIsModalOpen(false);
   const handleShow = (type) => {
@@ -25,13 +24,29 @@ function LeftDivContent({ onAddItem }) {
       isChecked: false,
     };
     onAddItem(newTransactionItem); // call onAddItem
+    // Update totalIncome or totalExpense based on transaction type
+    if (transactionData.type === "Income") {
+      onAddItem({
+        type: "updateTotalIncome",
+        amount: newTransactionItem.amount,
+      });
+    } else if (transactionData.type === "Expense") {
+      onAddItem({
+        type: "updateTotalExpense",
+        amount: newTransactionItem.amount,
+      });
+    }
   };
+
+  useEffect(() => {
+    // This will cause the component to re-render whenever totalIncome or totalExpense changes
+  }, [totalIncome, totalExpense]);
 
   return (
     <div className="LeftDivContent">
       <div className="Income">
         <h4>Income</h4>
-        <h4>10,000</h4>
+        <h4>{totalIncome}</h4>
         <Button
           className="btncircleIncome"
           onClick={() => handleShow("income")}
@@ -42,7 +57,7 @@ function LeftDivContent({ onAddItem }) {
 
       <div className="Expense">
         <h4>Expense</h4>
-        <h4>10,000</h4>
+        <h4>{totalExpense}</h4>
         <Button
           className="btncircleExpense"
           onClick={() => handleShow("expense")}
@@ -66,8 +81,6 @@ function LeftDivContent({ onAddItem }) {
           <AddTransactionForm type={modalType} onSubmit={handleFormSubmit} />
         </Modal.Body>
       </Modal>
-
-      <Chart />
     </div>
   );
 }
