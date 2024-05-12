@@ -10,7 +10,7 @@ function Register() {
           <div className="col-md-6 loginleft">
             <RegLeft />
           </div>
-          <div className="col-md-6 loginright">
+          <div className="col-md-6 regright">
             <RegRight />
           </div>
         </div>

@@ -54,7 +54,7 @@ body {
 }
 
 .economelogo1 {
-  height: 100%;
+  height: 100px;
   margin-right: 2%;
 }
 
@@ -224,17 +224,6 @@ body {
   margin-right: 0;
 }
 
-@media (max-width: 767.98px) {
-  .logincontainer {
-    width: 100%;
-    padding: 50px;
-  }
-  .loginleft,
-  .loginright {
-    padding: 10;
-  }
-}
-
 .form-control.error {
   border-color: red;
 }
@@ -245,12 +234,6 @@ body {
   padding-top: 0%;
   margin: 0%;
 }
-.loginlogo {
-  width: 30%; /* adjust the width as needed */
-  height: auto; /* adjust the height automatically */
-  margin: 0 auto; /* center the image horizontally */
-  display: block;
-}
 
 .reglogo {
   width: 150%; /* adjust the width as needed */
@@ -259,21 +242,12 @@ body {
   display: block;
 }
 
-/* Add this media query for full screen (min-width: 768px) */
-@media (min-width: 808px) {
-  .loginlogo {
-    width: 150%; /* adjust the width as needed */
-    height: auto; /* adjust the height automatically */
-    padding-left: 50%; /* adjust the padding as needed */
-    display: block;
-    margin: auto;
-  }
-}
-
 /* Add this media query for phone screens (max-width: 480px) */
-@media (max-width: 500px) {
+
+@media (max-width: 800px) {
   .homediv {
     flex-direction: column;
+    height: max-content;
   }
 
   .LeftDiv {
@@ -294,29 +268,24 @@ body {
     width: 100%;
     margin: 10px;
   }
-
-  .loginlogo {
-    width: 100%;
-    height: 50;
-    margin: 0 auto; /* center the image horizontally */
+  .reglogo {
+    width: 50%;
+    height: 200px; /* set a fixed height */
+    margin: 0 auto;
   }
 
-  .reglogo {
-    width: 30%;
-    height: auto;
-    margin: 0 auto; /* center the image horizontally */
+  .regcontainer {
+    width: 100%;
+    padding: 5%;
+    align-items: center;
+    display: flex;
   }
 
   .logincontainer {
     width: 100%;
-    padding: auto;
+    padding: 5%;
     align-items: center;
-  }
-
-  .regcontainer {
-    width: 100%;
-    padding: 20px;
-    align-items: center;
+    display: flex;
   }
 
   .form-group {
@@ -326,49 +295,8 @@ body {
   .btn-pink {
     width: 100%;
   }
-}
-
-@media (max-width: 680px) {
-  .homediv {
-    flex-direction: column;
-  }
-
-  .LeftDiv {
-    width: 100%;
-    margin-right: 0;
-  }
-
-  .RightDiv {
-    width: 100%;
-  }
-
-  .LeftDivContent {
-    width: 100%;
-    margin: 10px;
-  }
-
-  .RightDivContent {
-    width: 100%;
-    margin: 10px;
-  }
-
-  .reglogo {
-    width: 50%;
-    height: auto;
-    margin: 0 auto; /* center the image horizontally */
-  }
-
-  .regcontainer {
-    width: 100%;
-    align-items: center;
-    height: max-content;
-  }
-
-  .form-group {
-    margin-bottom: 10px;
-  }
-
-  .btn-pink {
-    width: 100%;
+  .loginright {
+    padding: 0px;
+    margin: 0px;
   }
 }

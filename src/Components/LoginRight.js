@@ -9,6 +9,11 @@ function LoginRight() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (!username || !password) {
+      setUsernameError("Username is required.");
+      setPasswordError("Password is required.");
+      return;
+    }
     // Add your login logic here
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const user = users.find(
@@ -49,6 +54,7 @@ function LoginRight() {
               name="username"
               value={username}
               onChange={handleUsernameChange}
+              required
               style={{ paddingLeft: "35px" }}
             />
           </div>
@@ -67,6 +73,7 @@ function LoginRight() {
               name="password"
               value={password}
               onChange={handlePasswordChange}
+              required
               style={{ paddingLeft: "35px" }}
             />
           </div>

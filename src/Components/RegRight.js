@@ -15,6 +15,15 @@ function RegRight() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (
+      !validateUsername(username) ||
+      !validateEmail(email) ||
+      !validatePhoneNumber(phoneNumber) ||
+      !validatePassword(password) ||
+      !validateConfirmPassword(confirmPassword)
+    ) {
+      return;
+    }
     // Add your registration logic here
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const newUser = {
@@ -22,7 +31,6 @@ function RegRight() {
       email,
       phoneNumber,
       password,
-      confirmPassword,
     };
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
@@ -31,7 +39,6 @@ function RegRight() {
     // Redirect to home page
     window.location.href = "/login";
   };
-
   const validateUsername = (username) => {
     if (!username.trim()) {
       setUsernameError("Username is required");
@@ -98,28 +105,33 @@ function RegRight() {
   };
 
   const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-    validateUsername(event.target.value);
+    const username = event.target.value;
+    setUsername(username);
+    validateUsername(username);
   };
 
   const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-    validateEmail(event.target.value);
+    const email = event.target.value;
+    setEmail(email);
+    validateEmail(email);
   };
 
   const handlePhoneNumberChange = (event) => {
-    setPhoneNumber(event.target.value);
-    validatePhoneNumber(event.target.value);
+    const phoneNumber = event.target.value;
+    setPhoneNumber(phoneNumber);
+    validatePhoneNumber(phoneNumber);
   };
 
   const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-    validatePassword(event.target.value);
+    const password = event.target.value;
+    setPassword(password);
+    validatePassword(password);
   };
 
   const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
-    validateConfirmPassword(event.target.value);
+    const confirmPassword = event.target.value;
+    setConfirmPassword(confirmPassword);
+    validateConfirmPassword(confirmPassword);
   };
 
   return (
@@ -140,6 +152,7 @@ function RegRight() {
               name="username"
               value={username}
               onChange={handleUsernameChange}
+              required
               style={{ paddingLeft: "35px" }}
             />
           </div>
@@ -160,6 +173,7 @@ function RegRight() {
               name="email"
               value={email}
               onChange={handleEmailChange}
+              required
               style={{ paddingLeft: "35px" }}
             />
           </div>
@@ -180,6 +194,7 @@ function RegRight() {
               name="phoneNumber"
               value={phoneNumber}
               onChange={handlePhoneNumberChange}
+              required
               style={{ paddingLeft: "35px" }}
             />
           </div>
@@ -202,6 +217,7 @@ function RegRight() {
               name="password"
               value={password}
               onChange={handlePasswordChange}
+              required
               style={{ paddingLeft: "35px" }}
             />
           </div>
@@ -222,6 +238,7 @@ function RegRight() {
               name="confirmPassword"
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
+              required
               style={{ paddingLeft: "35px" }}
             />
           </div>

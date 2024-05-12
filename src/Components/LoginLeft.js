@@ -5,7 +5,7 @@ function LoginLeft() {
   return (
     <div className="LeftDiv">
       <div className="headergreeting">
-        <img className="loginlogo" src="/economelogo1.png" />
+        <img className="reglogo" src="/economelogo1.png" />
       </div>
     </div>
   );
