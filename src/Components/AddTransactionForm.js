@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddTransactionModal from "./AddTransactionModal";
 
 const PURPOSE_OPTIONS = [
+  "Choose Purpose",
   "Saving",
   "Household",
   "Transportation",

@@ -129,17 +129,20 @@ function RightDivContent() {
     let othersAmount = 0;
 
     items.forEach((item) => {
-      if (item.purpose === "Savings") {
+      if (item.purpose === "Savings" && item.isChecked === false) {
         savingsAmount += item.amount;
-      } else if (item.purpose === "Household") {
+      } else if (item.purpose === "Household" && item.isChecked === false) {
         householdAmount += item.amount;
-      } else if (item.purpose === "Transportation") {
+      } else if (
+        item.purpose === "Transportation" &&
+        item.isChecked === false
+      ) {
         transportationAmount += item.amount;
-      } else if (item.purpose === "Personal") {
+      } else if (item.purpose === "Personal" && item.isChecked === false) {
         personalAmount += item.amount;
-      } else if (item.purpose === "Education") {
+      } else if (item.purpose === "Education" && item.isChecked === false) {
         educationAmount += item.amount;
-      } else if (item.purpose === "Others") {
+      } else if (item.purpose === "Others" && item.isChecked === false) {
         othersAmount += item.amount;
       }
     });
@@ -192,7 +195,11 @@ function RightDivContent() {
         <API />
         <div className="Chart_Content">
           <center>
-            <h1> Your Expenses</h1>
+            <LeftDivContent
+              onAddItem={handleAddItem}
+              totalIncome={totalIncome}
+              totalExpense={totalExpense}
+            />{" "}
           </center>
           <Stack
             direction={{ xs: "column", md: "row" }}
@@ -243,11 +250,6 @@ function RightDivContent() {
             />
           </Stack>
         </div>
-        <LeftDivContent
-          onAddItem={handleAddItem}
-          totalIncome={totalIncome}
-          totalExpense={totalExpense}
-        />{" "}
       </div>
 
       <div className="RightDivContent">
