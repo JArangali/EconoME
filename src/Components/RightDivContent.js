@@ -52,7 +52,7 @@ function RightDivContent() {
   }, [items]);
 
   const handleAddItem = (newItem) => {
-    setItems((newitems) => {
+    setItems((items) => {
       const newItems = [...items, newItem];
       let expense = 0;
       let income = 0;
@@ -77,6 +77,28 @@ function RightDivContent() {
       return newItems;
     });
   };
+
+  function handleDeleteItem(id) {
+    setItems((items) => {
+      const newItems = items.filter((item) => item.id != id);
+      let expense = 0;
+      let income = 0;
+
+      newItems.forEach((item) => {
+        if (item.type === "Expense") {
+          expense += item.amount;
+        } else if (item.type === "Income") {
+          income += item.amount;
+        }
+      });
+
+      // Update totalExpense and totalIncome state variables
+      setTotalExpense(expense);
+      setTotalIncome(income);
+
+      return newItems;
+    });
+  }
 
   const [sortBy, setSortBy] = useState("input");
 
@@ -111,14 +133,6 @@ function RightDivContent() {
       )
     );
   }
-
-  function handleDeleteItem(id) {
-    setItems((items) => items.filter((item) => item.id != id));
-  }
-
-  // function handleAddItem(newItem) {
-  //   setItems((items) => [...items, newItem]);
-  // }
 
   function handleClearList() {
     const confirmed = window.confirm("Are you sure you want to clear?");
