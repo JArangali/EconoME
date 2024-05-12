@@ -1,5 +1,5 @@
 import React from "react";
-import API from "../API/API.js";
+
 import Chart from "./Chart";
 
 function LeftDiv(totalExpense, totalIncome) {
@@ -11,7 +11,6 @@ function LeftDiv(totalExpense, totalIncome) {
       </div>
 
       <div>
-        <API />
         <Chart totalIncome={totalIncome} totalExpense={totalExpense} />
       </div>
     </div>
