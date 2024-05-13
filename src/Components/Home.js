@@ -4,6 +4,7 @@ import LeftDivContent from "./LeftDivContent"; // import LeftDivContent
 import API from "../API/API.js";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { Typography, Stack } from "@mui/material";
+import { useMediaQuery } from "@mui/material";
 
 import "../Luis.css";
 
@@ -113,7 +114,6 @@ function RightDivContent() {
     return new Date(year, month - 1, day);
   };
 
-  const [savingsAmount, setSavingsAmount] = useState(0);
   const [householdAmount, setHouseholdAmount] = useState(0);
   const [transportationAmount, setTransportationAmount] = useState(0);
   const [personalAmount, setPersonalAmount] = useState(0);
@@ -121,7 +121,6 @@ function RightDivContent() {
   const [othersAmount, setOthersAmount] = useState(0);
 
   useEffect(() => {
-    let savingsAmount = 0;
     let householdAmount = 0;
     let transportationAmount = 0;
     let personalAmount = 0;
@@ -130,12 +129,6 @@ function RightDivContent() {
 
     items.forEach((item) => {
       if (
-        item.purpose === "Savings" &&
-        item.isChecked === false &&
-        item.type === "Expense"
-      ) {
-        savingsAmount += item.amount;
-      } else if (
         item.purpose === "Household" &&
         item.isChecked === false &&
         item.type === "Expense"
@@ -167,8 +160,6 @@ function RightDivContent() {
         othersAmount += item.amount;
       }
     });
-
-    setSavingsAmount(savingsAmount);
     setHouseholdAmount(householdAmount);
     setTransportationAmount(transportationAmount);
     setPersonalAmount(personalAmount);
@@ -210,103 +201,113 @@ function RightDivContent() {
     }
   }
 
+  const isMobile = useMediaQuery("(max-width:600px)"); // adjust the breakpoint as needed
+
   return (
     <div className="Home">
       <div className="HomeContent">
-        <API />
-        <div className="Chart_Content">
-          <center>
-            <LeftDivContent
-              onAddItem={handleAddItem}
-              totalIncome={totalIncome}
-              totalExpense={totalExpense}
-            />{" "}
-          </center>
-          <Stack
-            direction={{ xs: "column", md: "row" }}
-            alignItems={{ xs: "flex-start", md: "center" }}
-            justifyContent="space-between"
-            sx={{ width: "100%" }}
-          >
-            <Typography
-              component="pre"
-              sx={{
-                maxWidth: { xs: "100%", md: "50%", flexShrink: 1 },
-                overflow: "auto",
-              }}
-            ></Typography>
+        <div>
+          <div className="Chart_Content">
+            <center>
+              <LeftDivContent
+                onAddItem={handleAddItem}
+                totalIncome={totalIncome}
+                totalExpense={totalExpense}
+              />{" "}
+            </center>
+            <Stack
+              direction={{ xs: "column", md: "row" }}
+              alignItems={{ xs: "flex-start", md: "center" }}
+              justifyContent="space-between"
+              sx={{ width: "100%" }}
+            >
+              <Typography
+                component="pre"
+                sx={{
+                  maxWidth: { xs: "100%", md: "50%", flexShrink: 1 },
+                  overflow: "auto",
+                }}
+              ></Typography>
 
-            <PieChart
-              series={[
-                {
-                  data: [
-                    { id: "savings", value: savingsAmount, label: "Savings" },
-                    {
-                      id: "household",
-                      value: householdAmount,
-                      label: "Household",
-                    },
-                    {
-                      id: "transportation",
-                      value: transportationAmount,
-                      label: "Transportation",
-                    },
-                    {
-                      id: "personal",
-                      value: personalAmount,
-                      label: "Personal",
-                    },
-                    {
-                      id: "education",
-                      value: educationAmount,
-                      label: "Education",
-                    },
-                    { id: "others", value: othersAmount, label: "Others" },
-                  ],
-                },
-              ]}
-              width={500}
-              height={300}
-              margin={{ right: 200 }}
-            />
-          </Stack>
-        </div>
-      </div>
+              <PieChart
+                series={[
+                  {
+                    data: [
+                      {
+                        id: "household",
+                        value: householdAmount,
+                        label: "Household",
+                        color: "#D25FA8",
+                      },
+                      {
+                        id: "transportation",
+                        value: transportationAmount,
+                        label: "Transportation",
+                        color: "#A1CFF0",
+                      },
+                      {
+                        id: "personal",
+                        value: personalAmount,
+                        label: "Personal",
+                        color: "#ECC00C",
+                      },
+                      {
+                        id: "education",
+                        value: educationAmount,
+                        label: "Education",
+                        color: "#9347A9",
+                      },
+                      { id: "others", value: othersAmount, label: "Others" },
+                    ],
+                  },
+                ]}
+                width={isMobile ? 300 : 500} // adjust the width based on the viewport size
+                height={isMobile ? 200 : 300} // adjust the height based on the viewport size
+                margin={{ right: isMobile ? 100 : 200 }} // adjust the margin based on the viewport size
+              />
+            </Stack>
 
-      <div className="RightDivContent">
-        {/* pass handleAddItem as a prop */}
-        <div className="Transactions">
-          <table className="transtable">
-            <tr>
-              <td className="flex-container">
-                <h4>Transactions </h4>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                >
-                  <option value="input">Sort by Input</option>
-                  <option value="date">Sort by Date</option>
-                  <option value="type">Sort by type</option>
-                  <option value="purpose">Sort by Purpose</option>
-                  <option value="amount-asc">Sort by amount (ascending)</option>
-                  <option value="amount-desc">
-                    Sort by amount (descending)
-                  </option>
-                  <option value="checked">Sort by Status</option>
-                </select>
-                <button className="clear-button" onClick={handleClearList}>
-                  Clear
-                </button>
-              </td>
-            </tr>
-          </table>
+            <API />
+          </div>
         </div>
-        <TransactionItemList
-          items={sortedItems}
-          onDeleteItem={handleDeleteItem}
-          onCheckedItem={handleCheckedItems}
-          onAddItem={handleAddItem}
-        />
+
+        <div className="RightDivContent">
+          {/* pass handleAddItem as a prop */}
+          <div className="Transactions">
+            <table className="transtable">
+              <tr>
+                <td className="flex-container">
+                  <h4>Transactions </h4>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                  >
+                    <option value="input">Sort by Input</option>
+                    <option value="date">Sort by Date</option>
+                    <option value="type">Sort by type</option>
+                    <option value="purpose">Sort by Purpose</option>
+                    <option value="amount-asc">
+                      Sort by amount (ascending)
+                    </option>
+                    <option value="amount-desc">
+                      Sort by amount (descending)
+                    </option>
+                    <option value="checked">Sort by Status</option>
+                  </select>
+                  <button className="clear-button" onClick={handleClearList}>
+                    Clear
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <TransactionItemList
+            items={sortedItems}
+            onDeleteItem={handleDeleteItem}
+            onCheckedItem={handleCheckedItems}
+            onAddItem={handleAddItem}
+          />
+        </div>
       </div>
     </div>
   );
