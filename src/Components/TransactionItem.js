@@ -14,102 +14,100 @@ function TransactionItem({ item, onDelete, onCheckedItem }) {
   }
 
   return (
-    <table className="tableData">
-      <tr>
-        <td
-          style={{
-            backgroundColor:
-              item.type === "Expense"
-                ? isChecked
-                  ? "#99ff54"
-                  : "#ff6e54"
-                : "#ffffff",
-          }}
-        >
-          {item.date}
-        </td>
-        <td
-          style={{
-            backgroundColor:
-              item.type === "Expense"
-                ? isChecked
-                  ? "#99ff54"
-                  : "#ff6e54"
-                : "#ffffff",
-          }}
-        >
-          {item.type}
-        </td>
-        <td
-          style={{
-            backgroundColor:
-              item.type === "Expense"
-                ? isChecked
-                  ? "#99ff54"
-                  : "#ff6e54"
-                : "#ffffff",
-          }}
-        >
-          {item.purpose}
-        </td>
-        <td
-          style={{
-            backgroundColor:
-              item.type === "Expense"
-                ? isChecked
-                  ? "#99ff54"
-                  : "#ff6e54"
-                : "#ffffff",
-          }}
-        >
-          {item.amount}
-        </td>
-        <td
-          style={{
-            backgroundColor:
-              item.type === "Expense"
-                ? isChecked
-                  ? "#99ff54"
-                  : "#ff6e54"
-                : "#ffffff",
-          }}
-        >
-          {item.reason}
-        </td>
-        <td
-          style={{
-            backgroundColor:
-              item.type === "Expense"
-                ? isChecked
-                  ? "#99ff54"
-                  : "#ff6e54"
-                : "#ffffff",
-          }}
-        >
-          {item.type === "Expense" ? (
-            <button className="button-row" onClick={handleCheck}>
-              {isChecked ? "Paid" : "Unpaid"}
-            </button>
-          ) : (
-            "Earnings"
-          )}
-        </td>
-        <td
-          style={{
-            backgroundColor:
-              item.type === "Expense"
-                ? isChecked
-                  ? "#99ff54"
-                  : "#ff6e54"
-                : "#ffffff",
-          }}
-        >
-          <button className="button-row" onClick={handleClick}>
-            Delete
+    <tr>
+      <td
+        style={{
+          backgroundColor:
+            item.type === "Expense"
+              ? isChecked
+                ? "#C7FDB0"
+                : "#FFC4C4"
+              : "#ffffff",
+        }}
+      >
+        {item.date}
+      </td>
+      <td
+        style={{
+          backgroundColor:
+            item.type === "Expense"
+              ? isChecked
+                ? "#C7FDB0"
+                : "#FFC4C4"
+              : "#ffffff",
+        }}
+      >
+        {item.type}
+      </td>
+      <td
+        style={{
+          backgroundColor:
+            item.type === "Expense"
+              ? isChecked
+                ? "#C7FDB0"
+                : "#FFC4C4"
+              : "#ffffff",
+        }}
+      >
+        {item.purpose}
+      </td>
+      <td
+        style={{
+          backgroundColor:
+            item.type === "Expense"
+              ? isChecked
+                ? "#C7FDB0"
+                : "#FFC4C4"
+              : "#ffffff",
+        }}
+      >
+        {item.amount}
+      </td>
+      <td
+        style={{
+          backgroundColor:
+            item.type === "Expense"
+              ? isChecked
+                ? "#C7FDB0"
+                : "#FFC4C4"
+              : "#ffffff",
+        }}
+      >
+        {item.reason}
+      </td>
+      <td
+        style={{
+          backgroundColor:
+            item.type === "Expense"
+              ? isChecked
+                ? "#C7FDB0"
+                : "#FFC4C4"
+              : "#ffffff",
+        }}
+      >
+        {item.type === "Expense" ? (
+          <button className="button-row btn btn-warning" onClick={handleCheck}>
+            {isChecked ? "Paid" : "Unpaid"}
           </button>
-        </td>
-      </tr>
-    </table>
+        ) : (
+          "Earnings"
+        )}
+      </td>
+      <td
+        style={{
+          backgroundColor:
+            item.type === "Expense"
+              ? isChecked
+                ? "#C7FDB0"
+                : "#FFC4C4"
+              : "#ffffff",
+        }}
+      >
+        <button className="button-row btn btn-danger" onClick={handleClick}>
+          Delete
+        </button>
+      </td>
+    </tr>
   );
 }
 

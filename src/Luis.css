@@ -73,3 +73,79 @@ ul {
   padding: 10px;
   border: 1px solid #ddd;
 }
+.transtable {
+  width: 100%;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-item {
+  /*margin-right: 10px;*/
+}
+
+.parent-element {
+  align-items: center;
+  overflow: auto;
+}
+
+.clear-button {
+  float: right;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 20px;
+  max-height: 20px;
+}
+
+.tablelist {
+  margin-left: 0;
+}
+
+ul {
+  margin-left: 0;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.tableHeader {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.tableHeader tr {
+  display: grid;
+  grid-template-columns: repeat(
+    7,
+    1fr
+  ); /* make each td element the same width */
+}
+
+.tableHeader td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  width: 112px;
+}
+
+.tableData {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableData tr {
+  display: grid;
+  grid-template-columns: repeat(
+    7,
+    1fr
+  ); /* make each td element the same width */
+}
+
+.tableData td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}

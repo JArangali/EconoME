@@ -44,7 +44,7 @@ function RightDivContent() {
 
   useEffect(() => {
     let expense = 0;
-    let income = 0;
+    let income = 0; // Start with the total income
 
     items.forEach((item) => {
       if (item.type === "Expense" && item.isChecked === false) {
@@ -52,11 +52,14 @@ function RightDivContent() {
       } else if (item.type === "Income") {
         income += item.amount;
       }
+      if (item.type === "Expense" && item.isChecked === true) {
+        income -= item.amount; // Subtract the expense amount from the income
+      }
     });
 
     setTotalExpense(expense);
     setTotalIncome(income);
-  }, [items]);
+  }, [items, totalIncome]);
 
   const handleAddItem = (newItem) => {
     setItems((items) => {
@@ -279,6 +282,7 @@ function RightDivContent() {
                 <td className="flex-container">
                   <h4>Transactions </h4>
                   <select
+                    className="selectSort"
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
                   >
@@ -294,7 +298,10 @@ function RightDivContent() {
                     </option>
                     <option value="checked">Sort by Status</option>
                   </select>
-                  <button className="clear-button" onClick={handleClearList}>
+                  <button
+                    className="btn btn btn-secondary"
+                    onClick={handleClearList}
+                  >
                     Clear
                   </button>
                 </td>

@@ -39,7 +39,7 @@
 
 body {
   font-family: sans-serif;
-  background-image: linear-gradient(to right, #dc5aa8, #c070c0);
+  background-image: url(/public/economeupdatedbg.png);
   background-size: cover;
   padding: 5%;
 }
@@ -82,6 +82,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 3%;
+  margin-right: 4%;
 }
 
 .Expense {
@@ -91,6 +92,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 3%;
+  margin-right: 4%;
 }
 
 .Transactions {
@@ -295,5 +297,82 @@ body {
   .loginright {
     padding: 0px;
     margin: 0px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  /* Adjust the max-width value based on your specific needs */
+  .MuiChartsLegend-mark,
+  .MuiChartsLegend-series tspan {
+    display: none !important;
+  }
+
+  .css-1blkw4v-MuiResponsiveChart-container {
+    margin-left: 19% !important;
+    margin-right: 15% !important;
+  }
+
+  .HomeContent {
+    display: unset;
+  }
+
+  .Chart_Content {
+    background-color: white;
+    height: 95%;
+    width: 95%;
+    padding: 2%;
+    margin: 2%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  .selectSort {
+    width: 30%;
+  }
+
+  .RightDivContent {
+    background-color: white;
+    width: 100%;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 2%;
+    border-radius: 10px;
+    margin-top: 7%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .HomeContent {
+    display: unset;
+  }
+
+  .Chart_Content {
+    background-color: white;
+    height: 95%;
+    width: 95%;
+    padding: 2%;
+    margin: 2%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  .selectSort {
+    width: 30%;
+  }
+
+  .RightDivContent {
+    background-color: white;
+    width: 100%;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 2%;
+    border-radius: 10px;
+    margin-top: 7%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 }
