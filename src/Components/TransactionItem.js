@@ -16,22 +16,76 @@ function TransactionItem({ item, onDelete, onCheckedItem }) {
   return (
     <table className="tableData">
       <tr>
-        <td style={{ textDecoration: isChecked ? "line-through" : "none" }}>
+        <td
+          style={{
+            backgroundColor:
+              item.type === "Expense"
+                ? isChecked
+                  ? "#99ff54"
+                  : "#ff6e54"
+                : "#ffffff",
+          }}
+        >
           {item.date}
         </td>
-        <td style={{ textDecoration: isChecked ? "line-through" : "none" }}>
+        <td
+          style={{
+            backgroundColor:
+              item.type === "Expense"
+                ? isChecked
+                  ? "#99ff54"
+                  : "#ff6e54"
+                : "#ffffff",
+          }}
+        >
           {item.type}
         </td>
-        <td style={{ textDecoration: isChecked ? "line-through" : "none" }}>
+        <td
+          style={{
+            backgroundColor:
+              item.type === "Expense"
+                ? isChecked
+                  ? "#99ff54"
+                  : "#ff6e54"
+                : "#ffffff",
+          }}
+        >
           {item.purpose}
         </td>
-        <td style={{ textDecoration: isChecked ? "line-through" : "none" }}>
+        <td
+          style={{
+            backgroundColor:
+              item.type === "Expense"
+                ? isChecked
+                  ? "#99ff54"
+                  : "#ff6e54"
+                : "#ffffff",
+          }}
+        >
           {item.amount}
         </td>
-        <td style={{ textDecoration: isChecked ? "line-through" : "none" }}>
+        <td
+          style={{
+            backgroundColor:
+              item.type === "Expense"
+                ? isChecked
+                  ? "#99ff54"
+                  : "#ff6e54"
+                : "#ffffff",
+          }}
+        >
           {item.reason}
         </td>
-        <td>
+        <td
+          style={{
+            backgroundColor:
+              item.type === "Expense"
+                ? isChecked
+                  ? "#99ff54"
+                  : "#ff6e54"
+                : "#ffffff",
+          }}
+        >
           {item.type === "Expense" ? (
             <button className="button-row" onClick={handleCheck}>
               {isChecked ? "Paid" : "Unpaid"}
@@ -40,7 +94,16 @@ function TransactionItem({ item, onDelete, onCheckedItem }) {
             "Earnings"
           )}
         </td>
-        <td>
+        <td
+          style={{
+            backgroundColor:
+              item.type === "Expense"
+                ? isChecked
+                  ? "#99ff54"
+                  : "#ff6e54"
+                : "#ffffff",
+          }}
+        >
           <button className="button-row" onClick={handleClick}>
             Delete
           </button>

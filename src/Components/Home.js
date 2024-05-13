@@ -129,20 +129,41 @@ function RightDivContent() {
     let othersAmount = 0;
 
     items.forEach((item) => {
-      if (item.purpose === "Savings" && item.isChecked === false) {
+      if (
+        item.purpose === "Savings" &&
+        item.isChecked === false &&
+        item.type === "Expense"
+      ) {
         savingsAmount += item.amount;
-      } else if (item.purpose === "Household" && item.isChecked === false) {
+      } else if (
+        item.purpose === "Household" &&
+        item.isChecked === false &&
+        item.type === "Expense"
+      ) {
         householdAmount += item.amount;
       } else if (
         item.purpose === "Transportation" &&
-        item.isChecked === false
+        item.isChecked === false &&
+        item.type === "Expense"
       ) {
         transportationAmount += item.amount;
-      } else if (item.purpose === "Personal" && item.isChecked === false) {
+      } else if (
+        item.purpose === "Personal" &&
+        item.isChecked === false &&
+        item.type === "Expense"
+      ) {
         personalAmount += item.amount;
-      } else if (item.purpose === "Education" && item.isChecked === false) {
+      } else if (
+        item.purpose === "Education" &&
+        item.isChecked === false &&
+        item.type === "Expense"
+      ) {
         educationAmount += item.amount;
-      } else if (item.purpose === "Others" && item.isChecked === false) {
+      } else if (
+        item.purpose === "Others" &&
+        item.isChecked === false &&
+        item.type === "Expense"
+      ) {
         othersAmount += item.amount;
       }
     });
