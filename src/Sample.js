@@ -4,7 +4,6 @@ function Sample() {
   return (
     <div className="App">
       <Blank />
-      
     </div>
   );
 }

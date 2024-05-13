@@ -9,7 +9,6 @@ import Sample from "./Components/Blank";
 function App() {
   return (
     <div className="App">
-      
       <Sample />
     </div>
   );
