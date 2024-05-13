@@ -4,18 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Home from "./Components/Home";
+import Sample from "./Components/Blank";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <Router>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/Register" element={<Register />} />
-        </Routes>
-      </Router>
+      
+      <Sample />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function LoginRight({ setIsLoggedIn }) {
   const [username, setUsername] = useState("");
@@ -23,9 +24,9 @@ function LoginRight({ setIsLoggedIn }) {
       // Set the user in local storage
       localStorage.setItem("currentUser", JSON.stringify(user));
       // Set the isLoggedIn state to true
-      setIsLoggedIn(true);
+      // setIsLoggedIn(true);
       // Redirect to home page
-      window.location.href = "/";
+      window.location.href = "/Home";
     } else {
       setUsernameError("Invalid username.");
       setPasswordError("Invalid password.");
