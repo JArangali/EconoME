@@ -13,32 +13,27 @@ function RightDivContent() {
       id: 1,
       date: "11/14/24",
       type: "Expense",
-      purpose: "Water",
+      purpose: "Household",
       amount: 2000,
+      reason: "Water",
       isChecked: false,
     },
     {
       id: 2,
       date: "09/17/24",
-      type: "Expense",
-      purpose: "Boracay",
+      type: "Income",
+      purpose: "Savings",
       amount: 20000,
+      reason: "SSS",
       isChecked: false,
     },
     {
       id: 3,
       date: "12/08/24",
-      type: "Income",
-      purpose: "Birthday GIft",
+      type: "Expense",
+      purpose: "Education",
       amount: 1500,
-      isChecked: false,
-    },
-    {
-      id: 4,
-      date: "11/05/24",
-      type: "Income",
-      purpose: "Senior Citizen Pension",
-      amount: 200,
+      reason: "Tuition",
       isChecked: false,
     },
   ]);
@@ -51,7 +46,7 @@ function RightDivContent() {
     let income = 0;
 
     items.forEach((item) => {
-      if (item.type === "Expense") {
+      if (item.type === "Expense" && item.isChecked === false) {
         expense += item.amount;
       } else if (item.type === "Income") {
         income += item.amount;
@@ -118,6 +113,69 @@ function RightDivContent() {
     return new Date(year, month - 1, day);
   };
 
+  const [savingsAmount, setSavingsAmount] = useState(0);
+  const [householdAmount, setHouseholdAmount] = useState(0);
+  const [transportationAmount, setTransportationAmount] = useState(0);
+  const [personalAmount, setPersonalAmount] = useState(0);
+  const [educationAmount, setEducationAmount] = useState(0);
+  const [othersAmount, setOthersAmount] = useState(0);
+
+  useEffect(() => {
+    let savingsAmount = 0;
+    let householdAmount = 0;
+    let transportationAmount = 0;
+    let personalAmount = 0;
+    let educationAmount = 0;
+    let othersAmount = 0;
+
+    items.forEach((item) => {
+      if (
+        item.purpose === "Savings" &&
+        item.isChecked === false &&
+        item.type === "Expense"
+      ) {
+        savingsAmount += item.amount;
+      } else if (
+        item.purpose === "Household" &&
+        item.isChecked === false &&
+        item.type === "Expense"
+      ) {
+        householdAmount += item.amount;
+      } else if (
+        item.purpose === "Transportation" &&
+        item.isChecked === false &&
+        item.type === "Expense"
+      ) {
+        transportationAmount += item.amount;
+      } else if (
+        item.purpose === "Personal" &&
+        item.isChecked === false &&
+        item.type === "Expense"
+      ) {
+        personalAmount += item.amount;
+      } else if (
+        item.purpose === "Education" &&
+        item.isChecked === false &&
+        item.type === "Expense"
+      ) {
+        educationAmount += item.amount;
+      } else if (
+        item.purpose === "Others" &&
+        item.isChecked === false &&
+        item.type === "Expense"
+      ) {
+        othersAmount += item.amount;
+      }
+    });
+
+    setSavingsAmount(savingsAmount);
+    setHouseholdAmount(householdAmount);
+    setTransportationAmount(transportationAmount);
+    setPersonalAmount(personalAmount);
+    setEducationAmount(educationAmount);
+    setOthersAmount(othersAmount);
+  }, [items]);
+
   let sortedItems;
   if (sortBy === "input") sortedItems = items;
   if (sortBy === "type")
@@ -158,7 +216,11 @@ function RightDivContent() {
         <API />
         <div className="Chart_Content">
           <center>
-            <h1> Your Expenses</h1>
+            <LeftDivContent
+              onAddItem={handleAddItem}
+              totalIncome={totalIncome}
+              totalExpense={totalExpense}
+            />{" "}
           </center>
           <Stack
             direction={{ xs: "column", md: "row" }}
@@ -178,8 +240,28 @@ function RightDivContent() {
               series={[
                 {
                   data: [
-                    { id: "id_A", value: totalIncome, label: "Income" },
-                    { id: "id_B", value: totalExpense, label: "Expenses" },
+                    { id: "savings", value: savingsAmount, label: "Savings" },
+                    {
+                      id: "household",
+                      value: householdAmount,
+                      label: "Household",
+                    },
+                    {
+                      id: "transportation",
+                      value: transportationAmount,
+                      label: "Transportation",
+                    },
+                    {
+                      id: "personal",
+                      value: personalAmount,
+                      label: "Personal",
+                    },
+                    {
+                      id: "education",
+                      value: educationAmount,
+                      label: "Education",
+                    },
+                    { id: "others", value: othersAmount, label: "Others" },
                   ],
                 },
               ]}
@@ -189,11 +271,6 @@ function RightDivContent() {
             />
           </Stack>
         </div>
-        <LeftDivContent
-          onAddItem={handleAddItem}
-          totalIncome={totalIncome}
-          totalExpense={totalExpense}
-        />{" "}
       </div>
 
       <div className="RightDivContent">

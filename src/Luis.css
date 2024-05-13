@@ -46,7 +46,7 @@ ul {
 .tableHeader tr {
   display: grid;
   grid-template-columns: repeat(
-    6,
+    7,
     1fr
   ); /* make each td element the same width */
 }
@@ -64,7 +64,7 @@ ul {
 .tableData tr {
   display: grid;
   grid-template-columns: repeat(
-    6,
+    7,
     1fr
   ); /* make each td element the same width */
 }

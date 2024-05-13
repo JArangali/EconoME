@@ -17,13 +17,14 @@ function LeftDivContent({ onAddItem, totalIncome, totalExpense }) {
   const handleFormSubmit = (transactionData) => {
     const newTransactionItem = {
       id: new Date().getTime(),
-      date: new Date().toLocaleDateString(),
+      date: transactionData.date, // Use the date from the form submission
       type: transactionData.type,
       purpose: transactionData.purpose,
       amount: parseInt(transactionData.amount),
+      reason: transactionData.reason,
       isChecked: false,
     };
-    onAddItem(newTransactionItem); // call onAddItem
+    onAddItem(newTransactionItem);
   };
 
   useEffect(() => {
@@ -66,7 +67,20 @@ function LeftDivContent({ onAddItem, totalIncome, totalExpense }) {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <AddTransactionForm type={modalType} onSubmit={handleFormSubmit} />
+          <AddTransactionForm
+            type={modalType}
+            onSubmit={handleFormSubmit}
+            allowedPurposes={{
+              Income: ["Savings"],
+              Expense: [
+                "Household",
+                "Transportation",
+                "Personal",
+                "Education",
+                "Others",
+              ], // or some other default options
+            }}
+          />
         </Modal.Body>
       </Modal>
     </div>

@@ -66,16 +66,6 @@ body {
   width: 50%;
 }
 
-.LeftDivContent {
-  background-color: white;
-  height: 100%;
-  width: 90%;
-  padding: 2%;
-  margin: 2%;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
 .RightDivContent {
   background-color: white;
   width: 100%;
