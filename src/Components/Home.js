@@ -5,10 +5,12 @@ import API from "../API/API.js";
 import { PieChart } from "@mui/x-charts/PieChart";
 import { Typography, Stack } from "@mui/material";
 import { useMediaQuery } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 import "../Luis.css";
 
 function RightDivContent() {
+  const navigate = useNavigate();
   const [items, setItems] = useState([
     {
       id: 1,
@@ -87,6 +89,14 @@ function RightDivContent() {
       return newItems;
     });
   };
+
+  function handleLogout() {
+    const confirmed = window.confirm("Are you sure you want to log out?");
+    if (confirmed) {
+      setItems([]);
+      navigate("/", { replace: true }); // replace "login" with your actual login route
+    }
+  }
 
   function handleDeleteItem(id) {
     setItems((items) => {
@@ -208,6 +218,11 @@ function RightDivContent() {
 
   return (
     <div className="Home">
+      <div className="logout-div">
+        <button className="btn btn btn-dark" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
       <div className="HomeContent">
         <div>
           <div className="Chart_Content">
@@ -273,7 +288,6 @@ function RightDivContent() {
             <API />
           </div>
         </div>
-
         <div className="RightDivContent">
           {/* pass handleAddItem as a prop */}
           <div className="Transactions">

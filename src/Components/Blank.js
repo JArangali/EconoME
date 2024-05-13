@@ -37,10 +37,20 @@ function Blank() {
 
   return (
     <div className={`Home ${hideDiv ? "hidden" : ""}`}>
-      <h1>Welcome to EconoMe! Click here to Login!</h1>
-      <button>
-        <a href="/login">Login</a>
-      </button>
+      <div className="welcomediv">
+        <div>
+          <img className="welcomeimg" src="/halfbody.png" />
+        </div>
+        <div className="titlecontainer">
+          <h2 className="welcometext">Welcome to</h2>
+          <h1 className="welcomesubtext">EconoMe!</h1>
+          <button className="loginbtnintro btn btn-info">
+            <a className="awel" href="/login">
+              Login
+            </a>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
