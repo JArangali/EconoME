@@ -25,13 +25,40 @@ function RightDivContent() {
       id: 2,
       date: "09/17/24",
       type: "Income",
-      purpose: "Savings",
+      purpose: "Saving",
       amount: 20000,
       reason: "SSS",
       isChecked: false,
     },
     {
       id: 3,
+      date: "12/08/24",
+      type: "Expense",
+      purpose: "Education",
+      amount: 1500,
+      reason: "Tuition",
+      isChecked: false,
+    },
+    {
+      id: 4,
+      date: "11/14/24",
+      type: "Expense",
+      purpose: "Other",
+      amount: 2000,
+      reason: "Gift",
+      isChecked: false,
+    },
+    {
+      id: 5,
+      date: "09/17/24",
+      type: "Income",
+      purpose: "Transportation",
+      amount: 20000,
+      reason: "SSS",
+      isChecked: false,
+    },
+    {
+      id: 6,
       date: "12/08/24",
       type: "Expense",
       purpose: "Education",
@@ -128,6 +155,7 @@ function RightDivContent() {
   };
 
   const [householdAmount, setHouseholdAmount] = useState(0);
+  const [savingAmount, setSavingAmount] = useState(0);
   const [transportationAmount, setTransportationAmount] = useState(0);
   const [personalAmount, setPersonalAmount] = useState(0);
   const [educationAmount, setEducationAmount] = useState(0);
@@ -135,6 +163,7 @@ function RightDivContent() {
 
   useEffect(() => {
     let householdAmount = 0;
+    let savingAmount = 0;
     let transportationAmount = 0;
     let personalAmount = 0;
     let educationAmount = 0;
@@ -147,6 +176,12 @@ function RightDivContent() {
         item.type === "Expense"
       ) {
         householdAmount += item.amount;
+      } else if (
+        item.purpose === "Saving" &&
+        item.isChecked === false &&
+        item.type === "Expense"
+      ) {
+        savingAmount += item.amount;
       } else if (
         item.purpose === "Transportation" &&
         item.isChecked === false &&
@@ -166,7 +201,7 @@ function RightDivContent() {
       ) {
         educationAmount += item.amount;
       } else if (
-        item.purpose === "Others" &&
+        item.purpose === "Other" &&
         item.isChecked === false &&
         item.type === "Expense"
       ) {
@@ -174,6 +209,7 @@ function RightDivContent() {
       }
     });
     setHouseholdAmount(householdAmount);
+    setSavingAmount(savingAmount);
     setTransportationAmount(transportationAmount);
     setPersonalAmount(personalAmount);
     setEducationAmount(educationAmount);
@@ -193,9 +229,21 @@ function RightDivContent() {
   if (sortBy === "amount-desc")
     sortedItems = items.slice().sort((a, b) => b.amount - a.amount);
   if (sortBy === "checked")
-    sortedItems = items
-      .slice()
-      .sort((a, b) => Number(a.isChecked) - Number(b.isChecked));
+    sortedItems = items.slice().sort((a, b) => {
+      if (a.isChecked === b.isChecked) {
+        return a.type.localeCompare(b.type);
+      } else {
+        return Number(a.isChecked) - Number(b.isChecked);
+      }
+    });
+  if (sortBy === "unchecked")
+    sortedItems = items.slice().sort((a, b) => {
+      if (a.isChecked === b.isChecked) {
+        return a.type.localeCompare(b.type);
+      } else {
+        return Number(b.isChecked) - Number(a.isChecked);
+      }
+    });
   if (sortBy === "date")
     sortedItems = items.slice().sort((a, b) => toDate(a.date) - toDate(b.date));
 
@@ -258,6 +306,12 @@ function RightDivContent() {
                         color: "#D25FA8",
                       },
                       {
+                        id: "saving",
+                        value: savingAmount,
+                        label: "Saving",
+                        color: "#CCD5AE",
+                      },
+                      {
                         id: "transportation",
                         value: transportationAmount,
                         label: "Transportation",
@@ -275,7 +329,12 @@ function RightDivContent() {
                         label: "Education",
                         color: "#9347A9",
                       },
-                      { id: "others", value: othersAmount, label: "Others" },
+                      {
+                        id: "others",
+                        value: othersAmount,
+                        label: "Others",
+                        color: "#fffff",
+                      },
                     ],
                   },
                 ]}
@@ -310,7 +369,8 @@ function RightDivContent() {
                     <option value="amount-desc">
                       Sort by amount (descending)
                     </option>
-                    <option value="checked">Sort by Status</option>
+                    <option value="checked">Sort by Paid Status</option>
+                    <option value="unchecked">Sort by Unpaid Status</option>
                   </select>
                   <button
                     className="btn btn btn-secondary"

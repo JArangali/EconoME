@@ -129,7 +129,8 @@ ul {
 .tableHeader td {
   padding: 10px;
   border: 1px solid #ddd;
-  width: 112px;
+  width: 117px;
+  font-size: 15px;
 }
 
 .tableData {
