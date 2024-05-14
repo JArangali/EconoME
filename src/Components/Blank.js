@@ -49,6 +49,14 @@ function Blank() {
               Login
             </a>
           </button>
+          <button
+            className="loginbtnintro btn btn-info"
+            style={{ marginLeft: "10px" }}
+          >
+            <a className="awel" href="/register">
+              Register
+            </a>
+          </button>
         </div>
       </div>
     </div>
