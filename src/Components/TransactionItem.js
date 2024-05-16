@@ -13,6 +13,14 @@ function TransactionItem({ item, onDelete, onCheckedItem }) {
     onDelete(item.id);
   }
 
+  // Add a separate function to format the amount
+  function formatAmount(amount: number): string {
+    return amount.toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  }
+
   const toggleDelete = () => {
     setIsDelete(() => !isDelete);
   };
@@ -75,8 +83,9 @@ function TransactionItem({ item, onDelete, onCheckedItem }) {
                 : "#ffffff",
           }}
         >
-          {item.amount}
+          ₱{formatAmount(item.amount)}
         </td>
+
         <td
           style={{
             backgroundColor:
