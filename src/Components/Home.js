@@ -87,7 +87,7 @@ function RightDivContent() {
     });
 
     setTotalExpense(expense);
-    setTotalIncome(income);
+    setTotalIncome(Math.max(income, 0));
   }, [items, totalIncome]);
 
   const handleAddItem = (newItem) => {
