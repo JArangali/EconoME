@@ -14,7 +14,7 @@ function RightDivContent() {
   const [items, setItems] = useState([
     {
       id: 1,
-      date: "11/14/24",
+      date: "2024-11-14",
       type: "Expense",
       purpose: "Household",
       amount: 2000,
@@ -23,7 +23,7 @@ function RightDivContent() {
     },
     {
       id: 2,
-      date: "09/17/24",
+      date: "2024-09-17",
       type: "Income",
       purpose: "Saving",
       amount: 20000,
@@ -32,7 +32,7 @@ function RightDivContent() {
     },
     {
       id: 3,
-      date: "12/08/24",
+      date: "2024-12-08",
       type: "Expense",
       purpose: "Education",
       amount: 1500,
@@ -41,7 +41,7 @@ function RightDivContent() {
     },
     {
       id: 4,
-      date: "11/14/24",
+      date: "2024-11-14",
       type: "Expense",
       purpose: "Other",
       amount: 2000,
@@ -50,7 +50,7 @@ function RightDivContent() {
     },
     {
       id: 5,
-      date: "09/17/24",
+      date: "2024-09-17",
       type: "Income",
       purpose: "Transportation",
       amount: 20000,
@@ -59,7 +59,7 @@ function RightDivContent() {
     },
     {
       id: 6,
-      date: "12/08/24",
+      date: "2024-12-08",
       type: "Expense",
       purpose: "Education",
       amount: 1500,
