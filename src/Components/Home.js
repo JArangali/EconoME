@@ -308,7 +308,7 @@ function RightDivContent() {
                       {
                         id: "saving",
                         value: savingAmount,
-                        label: "Saving",
+                        label: "Savings",
                         color: "#CCD5AE",
                       },
                       {

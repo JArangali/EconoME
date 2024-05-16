@@ -425,3 +425,8 @@ body {
   color: white;
   text-decoration: none;
 }
+.deletesurediv {
+  padding: 1%;
+  background-color: gray;
+  opacity: 90%;
+}

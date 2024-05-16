@@ -4,7 +4,7 @@ import "../Luis.css";
 
 function TransactionItemList({ items, onDeleteItem, onCheckedItem }) {
   return (
-    <div className="transactionTable">
+    <div>
       <table className="tableHeader">
         <tr>
           <td className="bold-text">DATE</td>
@@ -15,7 +15,8 @@ function TransactionItemList({ items, onDeleteItem, onCheckedItem }) {
           <td className="bold-text">STATUS</td>
           <td className="bold-text">DELETE</td>
         </tr>
-
+      </table>
+      <li style={{ marginLeft: "0", listStyleType: "none" }}>
         {items.map((item) => (
           <TransactionItem
             item={item}
@@ -24,7 +25,7 @@ function TransactionItemList({ items, onDeleteItem, onCheckedItem }) {
             onCheckedItem={onCheckedItem}
           />
         ))}
-      </table>
+      </li>
     </div>
   );
 }
