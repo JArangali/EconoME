@@ -155,7 +155,6 @@ function RightDivContent() {
   };
 
   const [householdAmount, setHouseholdAmount] = useState(0);
-  const [savingAmount, setSavingAmount] = useState(0);
   const [transportationAmount, setTransportationAmount] = useState(0);
   const [personalAmount, setPersonalAmount] = useState(0);
   const [educationAmount, setEducationAmount] = useState(0);
@@ -163,7 +162,6 @@ function RightDivContent() {
 
   useEffect(() => {
     let householdAmount = 0;
-    let savingAmount = 0;
     let transportationAmount = 0;
     let personalAmount = 0;
     let educationAmount = 0;
@@ -176,12 +174,6 @@ function RightDivContent() {
         item.type === "Expense"
       ) {
         householdAmount += item.amount;
-      } else if (
-        item.purpose === "Saving" &&
-        item.isChecked === false &&
-        item.type === "Expense"
-      ) {
-        savingAmount += item.amount;
       } else if (
         item.purpose === "Transportation" &&
         item.isChecked === false &&
@@ -209,7 +201,6 @@ function RightDivContent() {
       }
     });
     setHouseholdAmount(householdAmount);
-    setSavingAmount(savingAmount);
     setTransportationAmount(transportationAmount);
     setPersonalAmount(personalAmount);
     setEducationAmount(educationAmount);
@@ -302,37 +293,46 @@ function RightDivContent() {
                       {
                         id: "household",
                         value: householdAmount,
-                        label: "Household",
+                        label: `Household (${(
+                          (householdAmount / totalExpense) *
+                          100
+                        ).toFixed(2)}%)`,
                         color: "#D25FA8",
-                      },
-                      {
-                        id: "saving",
-                        value: savingAmount,
-                        label: "Savings",
-                        color: "#CCD5AE",
                       },
                       {
                         id: "transportation",
                         value: transportationAmount,
-                        label: "Transportation",
+                        label: `Transportation (${(
+                          (transportationAmount / totalExpense) *
+                          100
+                        ).toFixed(2)}%)`,
                         color: "#A1CFF0",
                       },
                       {
                         id: "personal",
                         value: personalAmount,
-                        label: "Personal",
+                        label: `Personal (${(
+                          (personalAmount / totalExpense) *
+                          100
+                        ).toFixed(2)}%)`,
                         color: "#ECC00C",
                       },
                       {
                         id: "education",
                         value: educationAmount,
-                        label: "Education",
+                        label: `Education (${(
+                          (educationAmount / totalExpense) *
+                          100
+                        ).toFixed(2)}%)`,
                         color: "#9347A9",
                       },
                       {
                         id: "others",
                         value: othersAmount,
-                        label: "Others",
+                        label: `Others (${(
+                          (othersAmount / totalExpense) *
+                          100
+                        ).toFixed(2)}%)`,
                         color: "#fffff",
                       },
                     ],
@@ -340,7 +340,7 @@ function RightDivContent() {
                 ]}
                 width={isMobile ? 300 : 500} // adjust the width based on the viewport size
                 height={isMobile ? 200 : 300} // adjust the height based on the viewport size
-                margin={{ right: isMobile ? 100 : 200 }} // adjust the margin based on the viewport size
+                margin={{ right: isMobile ? 100 : 220 }} // adjust the margin based on the viewport size
               />
             </Stack>
 
