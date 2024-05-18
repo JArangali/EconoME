@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DeleteModal from "./DeleteModal"; // Import the DeleteModal component
 import "../Luis.css";
 
 function TransactionItem({ item, onDelete, onCheckedItem }) {
@@ -25,16 +26,19 @@ function TransactionItem({ item, onDelete, onCheckedItem }) {
     setIsDelete(() => !isDelete);
   };
 
+  const confirmDelete = () => {
+    handleClick();
+    setIsDelete(() => false);
+  };
+
   return (
     <table style={{ position: "relative" }} className="tableData">
       {isDelete ? (
-        <div
-          className="deletesurediv"
-          style={{ position: "absolute", inset: "0" }}
-        >
-          <button onClick={handleClick}>Yes</button>
-          <button onClick={() => setIsDelete(() => !isDelete)}>No</button>
-        </div>
+        <DeleteModal
+          onConfirm={confirmDelete}
+          onCancel={toggleDelete}
+          message="Are you sure you want to delete this transaction?"
+        />
       ) : null}
       <tr>
         <td
