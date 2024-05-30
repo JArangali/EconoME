@@ -39,7 +39,7 @@
 
 body {
   font-family: sans-serif;
-  background-image: linear-gradient(to right, #dc5aa8, #c070c0);
+  background-image: url(/public/economeupdatedbg.png);
   background-size: cover;
   padding: 5%;
 }
@@ -69,8 +69,10 @@ body {
 .RightDivContent {
   background-color: white;
   width: 100%;
+  height: fit-content;
   padding: 2%;
   border-radius: 10px;
+  margin-top: 1%;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
@@ -78,8 +80,9 @@ body {
   border: 2px solid gray;
   background-color: #d9d9d9;
   display: flex;
-  justify-content: space-evenly;
-  padding: inherit;
+  justify-content: space-between;
+  padding: 3%;
+  margin-right: 4%;
 }
 
 .Expense {
@@ -87,12 +90,13 @@ body {
   background-color: #d9d9d9;
   margin-top: 3%;
   display: flex;
-  justify-content: space-evenly;
-  padding: inherit;
+  justify-content: space-between;
+  padding: 3%;
+  margin-right: 4%;
 }
 
 .Transactions {
-  padding-left: 2%;
+  padding: 3%;
   border: 2px solid gray;
   background-color: #d9d9d9;
   margin-top: 1%;
@@ -104,7 +108,7 @@ body {
 
 .Chart_Content {
   background-color: white;
-  height: 100%;
+  height: 95%;
   width: 90%;
   padding: 2%;
   margin: 2%;
@@ -116,4 +120,313 @@ body {
 
 .HomeContent {
   display: flex;
+}
+
+.transactionTable {
+  overflow-x: scroll;
+}
+
+/* .btncircleIncome {
+  background-color: #dc5aa8 !important;
+} */
+
+.homediv-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  flex-direction: row;
+}
+
+.username,
+.password,
+.number,
+.email,
+.confirmpassword {
+  position: relative;
+}
+
+.usernameimg,
+.passwordimg,
+.numberimg,
+.emailimg,
+.confirmpasswordimg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 50%;
+  transition: opacity 0.3s ease;
+}
+
+.username:focus ~ .usernameimg,
+.password:focus ~ .passwordimg,
+.number:focus ~ .numberimg,
+.email:focus ~ .emailimg {
+  opacity: 100%;
+}
+
+.btn-pink {
+  background-color: #ff69b4;
+  color: #fff;
+  border-color: #ff69b4;
+}
+
+.loginleft,
+.regleft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.loginright {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 100%; /* add this line */
+}
+
+.logincontainer {
+  width: 1000px;
+  max-width: 2000px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #f5f2f3;
+  padding: 5%;
+  align-items: center; /* add this line */
+  height: 100%;
+}
+.regcontainer {
+  width: 1000px;
+  max-width: 2000px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  background-color: #f5f2f3;
+  padding: 20px;
+  display: flex; /* add this line */
+  flex-direction: column; /* add this line */
+  align-items: center; /* add this line */
+  height: 100%;
+}
+
+.form-group {
+  margin-right: 0;
+}
+
+.form-control.error {
+  border-color: red;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  padding-top: 0%;
+  margin: 0%;
+}
+
+.reglogo {
+  width: 150%; /* adjust the width as needed */
+  height: auto; /* adjust the height automatically */
+  margin: 0 auto; /* center the image horizontally */
+  display: block;
+}
+
+/* Add this media query for phone screens (max-width: 480px) */
+
+@media (max-width: 800px) {
+  .homediv-login {
+    flex-direction: column;
+    height: max-content;
+  }
+
+  .LeftDiv {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .RightDiv {
+    width: 100%;
+  }
+
+  .LeftDivContent {
+    width: 100%;
+    margin: 10px;
+  }
+
+  .RightDivContent {
+    width: 100%;
+    margin: 10px;
+  }
+  .reglogo {
+    width: 50%;
+    height: 200px; /* set a fixed height */
+    margin: 0 auto;
+  }
+
+  .regcontainer {
+    width: 100%;
+    padding: 5%;
+    align-items: center;
+    display: flex;
+  }
+
+  .logincontainer {
+    width: 100%;
+    padding: 5%;
+    align-items: center;
+    display: flex;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+
+  .btn-pink {
+    width: 100%;
+  }
+  .loginright {
+    padding: 0px;
+    margin: 0px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  /* Adjust the max-width value based on your specific needs */
+  .MuiChartsLegend-mark,
+  .MuiChartsLegend-series tspan {
+    display: none !important;
+  }
+
+  .css-1blkw4v-MuiResponsiveChart-container {
+    margin-left: 19% !important;
+    margin-right: 15% !important;
+  }
+
+  .HomeContent {
+    display: unset;
+  }
+
+  .Chart_Content {
+    background-color: white;
+    height: 95%;
+    width: 95%;
+    padding: 2%;
+    margin: 2%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  .selectSort {
+    width: 30%;
+  }
+
+  .RightDivContent {
+    background-color: white;
+    width: 95%;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 2%;
+    border-radius: 10px;
+    margin-top: 7%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .HomeContent {
+    display: unset;
+  }
+
+  .Chart_Content {
+    background-color: white;
+    height: 95%;
+    width: 95%;
+    padding: 2%;
+    margin: 2%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+
+  .selectSort {
+    width: 30%;
+  }
+
+  .RightDivContent {
+    background-color: white;
+    width: 95%;
+    height: -moz-fit-content;
+    height: fit-content;
+    padding: 2%;
+    border-radius: 10px;
+    margin-top: 7%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .welcomesubtext {
+    font-size: 50px !important;
+    padding: 0px;
+  }
+
+  .loginbtnintro {
+    font-size: 23px !important;
+    width: 50% !important;
+    margin-top: 20px !important;
+    color: white !important;
+  }
+}
+.logout-div {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.welcomeimg {
+  width: 30%;
+}
+
+.welcomediv {
+  margin: 4%;
+}
+
+.welcomesubtext {
+  font-size: 75px;
+  padding: 0px;
+}
+
+.titlecontainer {
+  background-color: white;
+  padding: 6%;
+  border-radius: 55px;
+  border-color: black;
+  border-style: solid;
+}
+
+.loginbtnintro {
+  font-size: 23px;
+  width: 20%;
+  margin-top: 28px;
+  color: white;
+}
+
+.awel {
+  color: white;
+  text-decoration: none;
+}
+.deletesurediv {
+  padding: 1%;
+  background-color: gray;
+  opacity: 90%;
 }

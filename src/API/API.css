@@ -6,10 +6,10 @@
 
 /* Container */
 .containers {
-  background-color: white;
-  width: 100%;
+  background-color: #b19cd9 !important;
+  width: 96%;
+  margin: 2%;
   padding: 2%;
-  margin-left: 0%;
   margin-bottom: 5%;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

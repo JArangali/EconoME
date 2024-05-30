@@ -31,11 +31,19 @@ function LeftDivContent({ onAddItem, totalIncome, totalExpense }) {
     // This will cause the component to re-render whenever totalIncome or totalExpense changes
   }, [totalIncome, totalExpense]);
 
+  // Add a separate function to format the amount
+  function formatAmount(amount: number): string {
+    return amount.toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+  }
+
   return (
     <div className="LeftDivContent">
       <div className="Income">
-        <h4>Income</h4>
-        <h4>{totalIncome}</h4>
+        <h4>{totalIncome < 0 ? "Deficit" : "Income"}</h4>
+        <h4>₱{formatAmount(totalIncome)}</h4>
         <Button
           className="btncircleIncome"
           onClick={() => handleShow("Income")}
@@ -46,7 +54,7 @@ function LeftDivContent({ onAddItem, totalIncome, totalExpense }) {
 
       <div className="Expense">
         <h4>Expense</h4>
-        <h4>{totalExpense}</h4>
+        <h4>₱{formatAmount(totalExpense)}</h4>
         <Button
           className="btncircleExpense"
           onClick={() => handleShow("Expense")}
